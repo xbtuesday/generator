@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+<!--mybatis生成工具的帮助文档可以看：-->
+    <!--英文：http://www.mybatis.org/generator/usage/mysql.html-->
+    <!--中文：http://www.mybatis.tk/-->
+    <!--中文：http://mbg.cndocs.tk/-->
+    <!-- 
+    		如果你希望不生成和Example查询有关的内容，那么可以按照如下进行配置:
+    		<context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+    		
+    		 <context>元素用于指定生成一组对象的环境。例如指定要连接的数据库，要生成对象的类型和要处理的数据库中的表。运行MBG的时候还可以指定要运行的<context>。
+			该元素只有一个**必选属性**id，用来唯一确定一个<context>元素，该id属性可以在运行MBG的使用。
+    		
+    		
+    		
+    		
+      -->
+<context id="context" targetRuntime="MyBatis3"  defaultModelType="flat"> 
+<!--设置编码格式-->
+<property name="javaFileEncoding" value="UTF-8"/>
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://10.71.178.133:3306/Explame" userId="root" password="Lp@an#*12"/>
+<!--要生成的 domain 模块位置-->
+<javaModelGenerator targetPackage="com.Lpan.data.pojo" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+            <property name="comments" value="true"/>
+        </javaModelGenerator>
+<!--要生成的 Mapper.xml 文件位置-->
+<sqlMapGenerator targetPackage="com.Lpan.data.mapper" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+<!--要生成的 Mapper 接口类-->
+<javaClientGenerator targetPackage="com.Lpan.data.mapper" targetProject="src/main/java" type="XMLMAPPER">
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+        <!-- 表的配置 
+        		tableName=”%“   %指所有的表  另外所有的表都有自动增长的id字段   如果不一样则就需要做针对性配置         -->
+        <table tableName="explame_operate_log" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true" enableUpdateByExample="true">
+            <generatedKey column="Id" sqlStatement="mysql" identity="true"/>
+        </table>
+    </context>
+</generatorConfiguration>
